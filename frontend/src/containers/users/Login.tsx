@@ -2,10 +2,10 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
 import {Link, useNavigate} from "react-router-dom";
 import {selectLoginError} from "./usersSlice.ts";
 import React, {useState} from "react";
+import {LoginMutation} from "../../type";
 import {login} from "./usersThunk.ts";
 import Typography from "@mui/material/Typography";
 import {Grid} from "@mui/material";
-import {LoginMutation} from "../../type";
 
 
 const Login = () => {

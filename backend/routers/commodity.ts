@@ -6,14 +6,19 @@ import {imagesUpload} from "../multer";
 
 const commodityRouter = express.Router();
 
-commodityRouter.get('/', async (_req, res) => {
+commodityRouter.get('/', async (req, res) => {
     try {
-        const commodity = await Commodity.find().sort({'date': -1}).populate('user', 'username phone displayName');
-        return res.send(commodity);
-    } catch(e) {
+
+        const categoryFilter = req.query.category ? { category: req.query.category } : {};
+
+
+        const commodities = await Commodity.find(categoryFilter).sort({ 'date': -1 }).populate('user', 'username phone displayName');
+        return res.send(commodities);
+    } catch (e) {
         return res.sendStatus(500);
     }
 });
+
 
 commodityRouter.post('/',auth, imagesUpload.single('image'), async (req, res, next) => {
     try {
@@ -35,20 +40,6 @@ commodityRouter.post('/',auth, imagesUpload.single('image'), async (req, res, ne
             return res.status(400).send(e);
         }
         return next(e);
-    }
-});
-
-commodityRouter.get('/:id', async (req, res) => {
-    try {
-        const commodity = await Commodity.findById(req.params.id).populate('user', 'username');
-
-        if (!commodity) {
-            return res.sendStatus(404);
-        }
-
-        return res.send(commodity);
-    } catch {
-        return res.sendStatus(500);
     }
 });
 

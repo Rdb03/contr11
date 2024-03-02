@@ -5,6 +5,16 @@ export interface IUser {
     token: string;
 }
 
+export interface Commodity {
+    _id: string,
+    title: string,
+    description: string,
+    price: number,
+    image: string | null,
+    category: string,
+    user: IUser
+}
+
 export interface RegisterResponse {
     user: User;
     message: string;
