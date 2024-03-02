@@ -1,3 +1,3 @@
 export const apiURL = 'http://localhost:8000';
 
-export const commodities = ['cars', 'motorcycles', 'animals', 'property'];
+export const commoditiesArr = ['cars', 'motorcycles', 'animals', 'property'];

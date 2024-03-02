@@ -30,9 +30,7 @@ const FullCommodity = () => {
             console.error('ID is undefined');
         }
     };
-
-    console.log(user);
-
+    
     useEffect( () => {
         if (id) {
             dispatch(fetchFullCommodity(id));

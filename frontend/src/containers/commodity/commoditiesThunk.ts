@@ -4,18 +4,16 @@ import {Commodity, CommodityMutation, ValidationError} from "../../type";
 import {RootState} from "../../app/store.ts";
 import {isAxiosError} from "axios";
 
-export const fetchCommodities = createAsyncThunk<Commodity[]>(
-    'commodity/fetchCommodity',
-    async () => {
-        const response = await axiosApi.get<Commodity[]>('/commodity');
-        return response.data;
-    }
-);
-
-export const fetchCommoditiesCategory = createAsyncThunk<Commodity[], string>(
-    'commodity/fetchCommodity',
+export const fetchCommodities = createAsyncThunk<Commodity[], string>(
+    'commodity/fetchCommodityCategory',
     async (category: string) => {
-        const response = await axiosApi.get<Commodity[]>(`/commodity?category=${category}`);
+        if(category !== null) {
+            const response = await axiosApi.get<Commodity[]>(`/commodity?category=${category}`);
+            return response.data;
+        }
+
+
+        const response = await axiosApi.get<Commodity[]>(`/commodity`);
         return response.data;
     }
 );

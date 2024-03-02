@@ -5,15 +5,12 @@ import Typography from '@mui/material/Typography';
 import {Link} from "@mui/material";
 import {Link as RouterLink} from 'react-router-dom';
 import {selectUser} from "../../containers/users/usersSlice.ts";
-import {useAppDispatch, useAppSelector} from "../../app/hooks.ts";
+import {useAppSelector} from "../../app/hooks.ts";
 import AnonymousMenu from "../AnonymousMenu/AnonymMenu.tsx";
 import UserMenu from "../UserMenu/UserMenu.tsx";
-import {commodities} from "../../constants.ts";
-import {fetchCommodities, fetchCommoditiesCategory} from "../../containers/commodity/commoditiesThunk.ts";
 
 const Header = () => {
     const user = useAppSelector(selectUser);
-    const dispatch = useAppDispatch();
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -22,10 +19,6 @@ const Header = () => {
                     <Link sx={{color: 'white', marginRight: '20px'}} component={RouterLink} to="/">
                         <Typography sx={{fontSize: '30px'}}>Market</Typography>
                     </Link>
-                    <span onClick={() => dispatch(fetchCommodities())}>all</span>
-                    {commodities.map((item, index) => (
-                        <span onClick={() => dispatch(fetchCommoditiesCategory(item))} key={index}>{item}</span>
-                    ))}
                     {user
                         ?
                         <UserMenu/>
