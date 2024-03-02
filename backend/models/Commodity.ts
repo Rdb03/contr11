@@ -30,7 +30,8 @@ const CommoditySchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-    }
+        enum: ['cars', 'animals', 'motorcycles', 'property'],
+    },
 });
 
 const Commodity = mongoose.model('Commodity', CommoditySchema);

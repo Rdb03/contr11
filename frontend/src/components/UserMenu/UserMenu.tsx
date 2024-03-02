@@ -18,7 +18,7 @@ const UserMenu = () => {
     return (
         <Grid sx={{display: 'flex', alignItems: 'center'}}>
             {user ? <Typography sx={{marginTop: '1px'}}>Hello, {user.username}!</Typography> : 'Anonymous user'}
-            <Link sx={{color: 'white', margin: '20px'}} component={RouterLink} to="/newpost" underline="hover">
+            <Link sx={{color: 'white', margin: '20px'}} component={RouterLink} to="/newcommodity" underline="hover">
                 <Typography>Add new post</Typography>
             </Link>
             <Link

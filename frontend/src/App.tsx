@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import Commodities from "./containers/commodity/Commodities.tsx";
 import Login from "./containers/users/Login.tsx";
 import Register from "./containers/users/Register.tsx";
+import NewCommodities from "./containers/commodity/NewCommodities.tsx";
 
 const App = () => {
     return (
@@ -18,6 +19,9 @@ const App = () => {
                 )}/>
                 <Route path="/login" element={(
                     <Login/>
+                )}/>
+                <Route path="/newcommodity" element={(
+                    <NewCommodities/>
                 )}/>
             </Routes>
         </div>

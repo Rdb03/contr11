@@ -45,3 +45,10 @@ export interface LoginMutation {
 export interface GlobalError {
     error: string;
 }
+export interface CommodityMutation {
+    title: string;
+    description: string;
+    image: File | null;
+    price: string;
+    category: string;
+}

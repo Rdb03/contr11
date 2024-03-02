@@ -25,6 +25,7 @@ const Commodities = () => {
                      price={item.price}
                      title={item.title}
                      user={item.user}
+                     key={item._id}
                  />
                 ))}
             </Grid>
