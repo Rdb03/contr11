@@ -5,9 +5,17 @@ import {RootState} from "../../app/store.ts";
 import {isAxiosError} from "axios";
 
 export const fetchCommodities = createAsyncThunk<Commodity[]>(
-    'posts/fetchCommodity',
+    'commodity/fetchCommodity',
     async () => {
         const response = await axiosApi.get<Commodity[]>('/commodity');
+        return response.data;
+    }
+);
+
+export const fetchCommoditiesCategory = createAsyncThunk<Commodity[], string>(
+    'commodity/fetchCommodity',
+    async (category: string) => {
+        const response = await axiosApi.get<Commodity[]>(`/commodity?category=${category}`);
         return response.data;
     }
 );
@@ -17,7 +25,7 @@ export const createCommodity = createAsyncThunk<
     CommodityMutation,
     { state:RootState, rejectValue: ValidationError }
 >(
-    'posts/create',
+    'commodity/create',
     async (postMutation, {getState, rejectWithValue}) => {
         const usersState = getState().users;
         const token = usersState.user?.token;

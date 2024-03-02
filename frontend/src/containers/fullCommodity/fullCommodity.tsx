@@ -16,7 +16,7 @@ const FullCommodity = () => {
     const info = useAppSelector(selectInfo);
     const loading = useAppSelector(selectInfoLoading);
     const user = useAppSelector(selectUser);
-    let noImage = imageNotAvailable;
+    const noImage = imageNotAvailable;
 
     const deleteButton = async () => {
         if (id) {
