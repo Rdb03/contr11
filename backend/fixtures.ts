@@ -54,14 +54,14 @@ const run = async () => {
         image: 'images/BMW_M8_Competition_IMG_3364.jpg',
         user: user1._id,
         price: 180000,
-        category: 'car'
+        category: 'cars'
     }, {
         title: 'BMW S1000RR',
         description: 'perfect condition',
         image: 'images/s1000rr.jpg',
         price: 52000,
         user: user2._id,
-        category: 'motorcycle'
+        category: 'motorcycles'
     }, {
         title: 'American pit bull terrier puppies',
         description: 'Purebred American pit bull puppies',
@@ -75,7 +75,7 @@ const run = async () => {
         image: 'images/home.jpg',
         price: 3500000,
         user: user4._id,
-        category: 'animals'
+        category: 'property'
     });
 
     await db.close();

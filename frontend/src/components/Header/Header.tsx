@@ -17,7 +17,7 @@ const Header = () => {
             <AppBar position="static">
                 <Toolbar sx={{display: 'flex', justifyContent: 'space-between'}}>
                     <Link sx={{color: 'white', marginRight: '20px'}} component={RouterLink} to="/">
-                        <Typography sx={{fontSize: '30px'}}>Forum</Typography>
+                        <Typography sx={{fontSize: '30px'}}>Market</Typography>
                     </Link>
                     {user
                         ?

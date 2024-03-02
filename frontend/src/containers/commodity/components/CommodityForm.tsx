@@ -22,19 +22,24 @@ const CommodityForm = () => {
         title: '',
         description: '',
         image: null,
-        price: 0,
+        price: '',
         category: ''
     });
-
 
     const submitFormHandler = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {
-            await dispatch(createCommodity(state)).unwrap();
-            navigate('/');
-        } catch (e) {
-            console.log(e);
+        const parsedPrice = parseFloat(state.price);
+
+        if (isNaN(parsedPrice) || parsedPrice <= 0) {
+            alert('Please enter a valid positive price!');
+        } else {
+            try {
+                await dispatch(createCommodity(state)).unwrap();
+                navigate('/');
+            } catch (e) {
+                console.error(e);
+            }
         }
     };
 

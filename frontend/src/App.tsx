@@ -5,6 +5,9 @@ import Commodities from "./containers/commodity/Commodities.tsx";
 import Login from "./containers/users/Login.tsx";
 import Register from "./containers/users/Register.tsx";
 import NewCommodities from "./containers/commodity/NewCommodities.tsx";
+import FullCommodity from "./containers/fullCommodity/fullCommodity.tsx";
+import NoFound from "./components/No Found/No Found.tsx";
+
 
 const App = () => {
     return (
@@ -23,6 +26,10 @@ const App = () => {
                 <Route path="/newcommodity" element={(
                     <NewCommodities/>
                 )}/>
+                <Route path="/fullcommodity/:id" element={(
+                    <FullCommodity/>
+                )}/>
+                <Route path='/*' element={<NoFound />} />
             </Routes>
         </div>
     );

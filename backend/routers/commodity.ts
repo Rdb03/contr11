@@ -9,12 +9,31 @@ const commodityRouter = express.Router();
 commodityRouter.get('/', async (req, res) => {
     try {
 
-        const categoryFilter = req.query.category ? { category: req.query.category } : {};
+        const categoryFilter = req.query.category as string;
 
+        if(!categoryFilter) {
+            const commodities = await Commodity.find();
+            return res.send(commodities);
+        }
 
-        const commodities = await Commodity.find(categoryFilter).sort({ 'date': -1 }).populate('user', 'username phone displayName');
+        const commodities = await Commodity.find({category: categoryFilter});
+
         return res.send(commodities);
     } catch (e) {
+        return res.sendStatus(500);
+    }
+});
+
+commodityRouter.get('/:id', async (req, res) => {
+    try {
+        const post = await Commodity.findById(req.params.id).populate('user', 'username phone displayName');
+
+        if (!post) {
+            return res.sendStatus(404);
+        }
+
+        return res.send(post);
+    } catch {
         return res.sendStatus(500);
     }
 });
@@ -44,25 +63,26 @@ commodityRouter.post('/',auth, imagesUpload.single('image'), async (req, res, ne
 });
 
 commodityRouter.delete('/:id', auth, async (req, res, next) => {
-   try {
-       const user = (req as RequestWithUser).user;
+    try {
+        const user = (req as RequestWithUser).user;
 
-       const commodity = await Commodity.findById(req.params.id);
+        const commodity = await Commodity.findById(req.params.id);
 
-       if (!commodity) {
-           return res.sendStatus(404);
-       }
+        if (!commodity) {
+            return res.sendStatus(404);
+        }
 
-       if (commodity.user.toString() !== user.id) {
-           return res.sendStatus(403);
-       }
+        if (commodity.user.toString() !== user.id) {
+            return res.sendStatus(403);
+        }
 
-       await Commodity.findByIdAndDelete({_id: req.params.id});
+        await Commodity.findByIdAndDelete({_id: req.params.id});
 
-       return res.sendStatus(204);
-   } catch (e) {
-       return next(e);
-   }
+        return res.sendStatus(204);
+    } catch (e) {
+        return next(e);
+    }
 });
+
 
 export default commodityRouter;

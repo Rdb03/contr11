@@ -15,6 +15,19 @@ export interface Commodity {
     user: IUser
 }
 
+export interface CommodityInfo {
+    title: string,
+    description: string,
+    price: number,
+    image: string | null,
+    category: string,
+    user: {
+        displayName: string,
+        phone: string,
+        _id: string,
+    }
+}
+
 export interface RegisterResponse {
     user: User;
     message: string;
