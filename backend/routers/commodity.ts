@@ -8,7 +8,7 @@ const commodityRouter = express.Router();
 
 commodityRouter.get('/', async (_req, res) => {
     try {
-        const commodity = await Commodity.find().sort({'date': -1}).populate('user', 'username');
+        const commodity = await Commodity.find().sort({'date': -1}).populate('user', 'username phone displayName');
         return res.send(commodity);
     } catch(e) {
         return res.sendStatus(500);

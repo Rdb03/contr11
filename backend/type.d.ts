@@ -3,7 +3,7 @@
         password: string;
         token: string;
         displayName: string;
-        phoneNumber: string;
+        phone: string;
     }
 
 export interface Commodity {
@@ -20,6 +20,8 @@ export interface UserFields {
     username: string;
     password: string;
     token: string;
+    displayName: string,
+    phone: string,
 }
 
 interface UserMethods {

@@ -35,6 +35,14 @@ const UserSchema = new Schema<UserFields, UserModel, UserMethods>({
   token: {
     type: String,
     required: true,
+  },
+  displayName: {
+    type: String,
+    required: true,
+  },
+  phone: {
+    type: String,
+    required: true,
   }
 });
 
